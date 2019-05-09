@@ -150,7 +150,7 @@ int main(void) {
   int lastSpeedL = 0, lastSpeedR = 0;
   int speedL = 0, speedR = 0, speedRL = 0;
   // float direction = 1;
-  
+
   float adc1_filtered = 0.0;
   float adc2_filtered = 0.0;
 
@@ -313,7 +313,7 @@ int main(void) {
       weakr = weakl = (int)weak; // weak should never exceed 400 or 450 MAX!!
     }
 
-    speed = speedR = speedL = CLAMP(speedRL, -1000, 1000);  // clamp output
+    speed = speedR = speedL = CLAMP(SPEED_COEFFICIENT * speedRL, -1000, 1000);  // clamp output
 
 
     // ####### LOW-PASS FILTER #######
@@ -352,7 +352,7 @@ int main(void) {
       // ####### CALC BOARD TEMPERATURE #######
       board_temp_adc_filtered = board_temp_adc_filtered * 0.99 + (float)adc_buffer.temp * 0.01;
       board_temp_deg_c = ((float)TEMP_CAL_HIGH_DEG_C - (float)TEMP_CAL_LOW_DEG_C) / ((float)TEMP_CAL_HIGH_ADC - (float)TEMP_CAL_LOW_ADC) * (board_temp_adc_filtered - (float)TEMP_CAL_LOW_ADC) + (float)TEMP_CAL_LOW_DEG_C;
-      
+
       // ####### DEBUG SERIAL OUT #######
       #ifdef CONTROL_ADC
         setScopeChannel(0, (int)adc1_filtered);  // 1: ADC1
