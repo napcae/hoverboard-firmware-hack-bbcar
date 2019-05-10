@@ -388,7 +388,7 @@ int main(void) {
     } else if (batteryVoltage < ((float)BAT_LOW_LVL2 * (float)BAT_NUMBER_OF_CELLS) && batteryVoltage > ((float)BAT_LOW_DEAD * (float)BAT_NUMBER_OF_CELLS) && BAT_LOW_LVL2_ENABLE) {  // low bat 2: fast beep
       buzzerFreq = 5;
       buzzerPattern = 6;
-    } else if (BEEPS_BACKWARD && speed < -50) {  // backward beep
+    } else if (BEEPS_BACKWARD && speed * SPEED_COEFFICIENT < -50) {  // backward beep
       buzzerFreq = 5;
       buzzerPattern = 1;
     } else {  // do not beep
