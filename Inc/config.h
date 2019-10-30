@@ -16,7 +16,7 @@
 
 // Battery voltage calibration: connect power source. see <How to calibrate>. write value nr 5 to BAT_CALIB_ADC. make and flash firmware. then you can verify voltage on value 6 (devide it by 100.0 to get calibrated voltage).
 #define BAT_CALIB_REAL_VOLTAGE        39.0       // input voltage measured by multimeter
-#define BAT_CALIB_ADC                 1500       // adc-value measured by mainboard (value nr 5 on UART debug output)
+#define BAT_CALIB_ADC                 1520       // adc-value measured by mainboard (value nr 5 on UART debug output)
 
 #define BAT_NUMBER_OF_CELLS     10        // normal Hoverboard battery: 10s
 #define BAT_LOW_LVL1_ENABLE     0         // to beep or not to beep, 1 or 0
@@ -63,10 +63,10 @@
 // ###### CONTROL VIA TWO POTENTIOMETERS ######
 // ADC-calibration to cover the full poti-range: connect potis to left sensor board cable (0 to 3.3V) (do NOT use the red 15V wire in the cable!). see <How to calibrate>. turn the potis to minimum position, write value 1 to ADC1_MIN and value 2 to ADC2_MIN. turn to maximum position and repeat it for ADC?_MAX. make, flash and test it.
 #define CONTROL_ADC                 // use ADC as input. disable DEBUG_SERIAL_USART2!
-#define ADC1_MIN 350                // min ADC1-value while poti at minimum-position (0 - 4095)
-#define ADC1_MAX 3230               // max ADC1-value while poti at maximum-position (0 - 4095)
-#define ADC2_MIN 375                // min ADC2-value while poti at minimum-position (0 - 4095)
-#define ADC2_MAX 3230               // max ADC2-value while poti at maximum-position (0 - 4095)
+#define ADC1_MIN 0                // min ADC1-value while poti at minimum-position (0 - 4095)
+#define ADC1_MAX 4060               // max ADC1-value while poti at maximum-position (0 - 4095)
+#define ADC2_MIN 0                // min ADC2-value while poti at minimum-position (0 - 4095)
+#define ADC2_MAX 3750               // max ADC2-value while poti at maximum-position (0 - 4095)
 
 // ###### CONTROL VIA NINTENDO NUNCHUCK ######
 // left sensor board cable. keep cable short, use shielded cable, use ferrits, stabalize voltage in nunchuck, use the right one of the 2 types of nunchucks, add i2c pullups. use original nunchuck. most clones does not work very well.
